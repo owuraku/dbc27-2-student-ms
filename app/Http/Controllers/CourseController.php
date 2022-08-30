@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -13,6 +14,10 @@ class CourseController extends Controller
      */
     public function index()
     {
+
+        return view('courses.index')
+        ->with('courses', Course::all())
+        ;
         //
     }
 
@@ -23,6 +28,7 @@ class CourseController extends Controller
      */
     public function create()
     {
+        return view('courses.form');
         //
     }
 
@@ -34,7 +40,14 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>['required', 'max:100', 'min:4'],
+            'courseCode'=>['required', 'max:20', 'min:4'],
+            'description'=>['required', 'max:100', 'min:4'],
+        ]);
+
+        Course::create($request->only(['name','courseCode','description']));
+        return redirect(route('course.index'));
     }
 
     /**

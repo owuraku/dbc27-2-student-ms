@@ -5,8 +5,8 @@
       </a>
 
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Students</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Courses</a></li>
+        <li><a href="{{route('student.index')}}" class="nav-link px-2 link-secondary">Students</a></li>
+        <li><a href="{{route('course.index')}}" class="nav-link px-2 link-dark">Courses</a></li>
       </ul>
 
       <div class="col-md-3 text-end">
