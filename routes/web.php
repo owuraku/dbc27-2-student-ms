@@ -26,8 +26,8 @@ Route::get('/dashboard', function () {
 
 Route::prefix('/students')->group( function(){
     Route::get('', [StudentController::class, 'index'])->name('student.index');
-    Route::get('/create', [StudentController::class, 'create'])->name('student.add-form');
-    Route::post('/create', [StudentController::class, 'store'])->name('student.create');
+    Route::get('/create', [StudentController::class, 'create'])->name('student.add-form')->middleware('admin');
+    Route::post('/create', [StudentController::class, 'store'])->name('student.create')->middleware('admin');
     Route::get('/edit/{id}', [StudentController::class, 'edit'])->name('student.edit-form');
     Route::get('/{id}', [StudentController::class, 'show']);
     Route::patch('/{id}', [StudentController::class, 'update'])->name('student.update');
@@ -38,8 +38,8 @@ Route::prefix('/courses')->group( function(){
     Route::get('', [CourseController::class, 'index'])->name('course.index');
     Route::get('/create', [CourseController::class, 'create'])->name('course.add-form');
     Route::post('/create', [CourseController::class, 'store'])->name('course.create');
-    Route::get('/edit/{id}', [CourseController::class, 'edit'])->name('student.edit-form');
-    Route::get('/{id}', [CourseController::class, 'show']);
+    Route::get('/edit/{id}', [CourseController::class, 'edit'])->name('course.edit-form');
+    Route::get('/{id}', [CourseController::class, 'show'])->name('course.show');
     Route::patch('/{id}', [CourseController::class, 'update'])->name('course.update');
     Route::delete('/{id}', [CourseController::class, 'destroy'])->name('course.delete');
 });

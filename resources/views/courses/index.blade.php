@@ -20,8 +20,11 @@
                 <td>{{$course->courseCode}}</td>
                 <td>{{$course->description}}</td>
                 <td>
+                    @if(Auth::user()->userType == 'admin')
+                    <a href="{{route('course.show', ['id' => $course->id])}}" class="btn btn-success">View</a>
                     <button class="btn btn-danger">Delete</button>
                     <button class="btn btn-primary">Edit</button>
+                    @endif
                 </td>
             </tr>
             @endforeach
