@@ -10,6 +10,7 @@
                 <th scope="col">Student ID</th>
                 <th scope="col">Student Name</th>
                 <th scope="col">Gender</th>
+                <th scope="col">Course</th>
                 <th scope="col">Actions</th>
             </tr>
         </thead>
@@ -19,6 +20,7 @@
                 <th scope="row">{{$student->studentId}}</th>
                 <td>{{$student->name}}</td>
                 <td>{{$student->gender}}</td>
+                <td>{{$student->course->name}} ({{$student->course->courseCode}}) </td>
                 <td>
                     <button class="btn btn-success">View</button>
                     <button class="btn btn-danger">Delete</button>

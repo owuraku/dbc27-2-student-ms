@@ -38,6 +38,18 @@
         @enderror
   </div>
 
+  <div class="mb-3">
+    <label for="courseId" class="form-label">Course</label>
+    <select class="form-control" name="courseId" id="courseId">
+        @foreach ($courses as $course)
+        <option value="{{$course->id}}">{{$course->name}}</option>
+        @endforeach
+    </select>
+    @error('courseId')
+    <span class="error">{{$message}}</span>
+    @enderror
+  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 @endsection

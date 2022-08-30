@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('students.form');
+        return view('students.form')
+        ->with('courses', Course::all());
 
         //
     }
@@ -44,14 +46,16 @@ class StudentController extends Controller
             'name'=> ['required', 'min:3', 'max:100'],
             'dob'=> ['required', 'date'],
             'gender'=> ['required','in:male,female'],
-            'studentId' => ['required', 'min:10', 'max:10']
+            'studentId' => ['required', 'min:10', 'max:10'],
+            'courseId'=> ['required']
         ]);
 
         Student::create($request->only([
             'name',
             'dob',
             'gender',
-            'studentId'
+            'studentId',
+            'courseId'
         ]));
         return redirect(route('student.index'));
         //
